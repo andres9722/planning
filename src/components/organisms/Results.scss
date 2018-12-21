@@ -1,0 +1,25 @@
+@import "../shared/typography.scss";
+@import "../shared/variables.scss";
+
+.results {
+  margin-top: 8px;
+
+  &__title {
+  }
+
+  &__list {
+    &-item {
+      &-name {
+      }
+    }
+  }
+
+  &__total {
+    font-size: 2.5rem;
+    margin-top: 8px;
+  }
+
+  &__average {
+    font-size: 3rem;
+  }
+}

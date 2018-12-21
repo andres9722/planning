@@ -1,0 +1,16 @@
+@import "../shared/typography.scss";
+@import "../shared/variables.scss";
+
+.dashboard {
+  padding: 8px;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  &__signout {
+    position: fixed;
+    bottom: 100px;
+  }
+}
