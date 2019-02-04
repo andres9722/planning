@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext } from 'react'
 import Card from '../molecules/Card'
 import './Cards.scss'
 import firebase from 'firebase/app'
@@ -27,7 +27,7 @@ const Cards = ({ users, getUsers }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <div className='cards'>
         <Card onClick={handleOnVote}>0</Card>
         <Card onClick={handleOnVote}>1</Card>
@@ -37,7 +37,7 @@ const Cards = ({ users, getUsers }) => {
         <Card onClick={handleOnVote}>5</Card>
       </div>
       <Results votes={users} />
-    </Fragment>
+    </>
   )
 }
 

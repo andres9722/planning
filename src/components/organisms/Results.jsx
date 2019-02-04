@@ -2,21 +2,35 @@ import React from 'react'
 import './Results.scss'
 
 const Results = ({ votes }) => {
-  let total = votes
-    .map(vote => vote.value)
-    .reduce((a, b) => Number(a) + Number(b), 0)
+  const votesArray = votes.map(vote => +vote.value)
 
-  let average = total / votes.length || 0
+  const min = Math.min(...votesArray)
+  const max = Math.max(...votesArray)
+
+  let indexMin = votesArray.findIndex(value => value === min)
+  let indexMax = votesArray.findIndex(value => value === max)
+
+  let total = votesArray.reduce((a, b) => +a + +b, 0) - min - max
+
+  let average = total / (votesArray.length - 2) || 0
+
+  console.log(total, average)
 
   return (
     <div className='results'>
       <h5 className='results__title'>Results</h5>
       <ul className='results__list'>
-        {votes.map(vote => (
+        {votes.map((vote, i) => (
           <li key={vote.email} className='results__list-item'>
-            <span className='results__list-item-name'>
-              {vote.email} : <b>{vote.value}</b>
-            </span>
+            {i === indexMin || i === indexMax ? (
+              <strike className='results__list-item-name'>
+                {vote.email}: {vote.value}
+              </strike>
+            ) : (
+              <span className='results__list-item-name'>
+                {vote.email}: {vote.value}
+              </span>
+            )}
           </li>
         ))}
       </ul>
